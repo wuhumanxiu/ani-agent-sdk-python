@@ -48,7 +48,7 @@ python -m py_compile src/ani_agent_sdk/*.py
 
 ## Protocol Sync
 
-The SDK vendors the backend protocol contract under `protocol/`.
+The SDK vendors the backend protocol contract under `protocol/`, including `routes.generated.json` generated from the backend router.
 
 ```bash
 python scripts/fetch_protocol.py

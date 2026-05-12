@@ -9,9 +9,12 @@ PROTOCOL = ROOT / "protocol"
 def test_protocol_manifest_required_paths_exist_in_openapi():
     manifest = json.loads((PROTOCOL / "manifest.json").read_text())
     openapi = (PROTOCOL / "openapi.yaml").read_text()
+    route_contract = json.loads((PROTOCOL / "routes.generated.json").read_text())
+    routes = {route["path"] for route in route_contract["routes"]}
 
     for path in manifest["requiredRestPaths"]:
         assert path in openapi
+        assert path in routes
 
 
 def test_send_fields_exist_in_protocol_contract():
@@ -30,4 +33,3 @@ def test_websocket_events_exist_in_schema():
 
     for event in manifest["requiredWebSocketEvents"]:
         assert event in events
-

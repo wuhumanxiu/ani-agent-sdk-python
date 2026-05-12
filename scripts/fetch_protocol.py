@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_BACKEND = ROOT.parent / "agent-native-im"
-FILES = ["manifest.json", "openapi.yaml", "ws-events.schema.json"]
+FILES = ["manifest.json", "openapi.yaml", "routes.generated.json", "ws-events.schema.json"]
 
 
 def main() -> None:
@@ -24,4 +24,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

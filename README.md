@@ -23,7 +23,7 @@ pytest
 
 ## Protocol Contract
 
-This SDK vendors the ANI protocol contract in `protocol/`.
+This SDK vendors the ANI protocol contract in `protocol/`, including the generated backend route inventory.
 
 Refresh it from a sibling backend checkout:
 
