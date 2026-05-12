@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ani-agent-sdk-python"
+version = "0.1.0"
+description = "Python SDK for connecting AI agents to Agent-Native IM (ANI)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "Wuzhi AI", email = "dev@wuzhi-ai.com" }]
+keywords = ["ani", "agent-native-im", "ai-agent", "websocket", "bot"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Communications :: Chat",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+  "httpx>=0.27.0",
+  "websockets>=12.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0.0",
+  "pytest-asyncio>=0.23.0",
+]
+
+[project.urls]
+Homepage = "https://agent-native.im"
+Repository = "https://github.com/wzfukui/ani-agent-sdk-python"
+Issues = "https://github.com/wzfukui/ani-agent-sdk-python/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ani_agent_sdk"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
