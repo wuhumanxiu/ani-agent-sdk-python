@@ -41,6 +41,5 @@ Issues = "https://github.com/wzfukui/ani-agent-sdk-python/issues"
 packages = ["src/ani_agent_sdk"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["tests", "contract-tests"]
 asyncio_mode = "auto"
-

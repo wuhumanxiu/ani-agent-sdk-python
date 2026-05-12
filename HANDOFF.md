@@ -46,6 +46,18 @@ pytest
 python -m py_compile src/ani_agent_sdk/*.py
 ```
 
+## Protocol Sync
+
+The SDK vendors the backend protocol contract under `protocol/`.
+
+```bash
+python scripts/fetch_protocol.py
+pytest contract-tests
+```
+
+The canonical source is `/Users/donaldford/code/SuperBody/dev/agent-native-im/docs/protocol/`.
+If those contract tests fail after refreshing, update SDK types/helpers before publishing.
+
 ## Suggested Next Tasks
 
 1. Port proven primitives from `agent-native-im-sdk-python` into this cleaner package.
@@ -53,4 +65,3 @@ python -m py_compile src/ani_agent_sdk/*.py
 3. Add file upload/download helpers.
 4. Add a conformance test suite that can be reused by Zebra/Hermes adapters.
 5. Publish to PyPI only after Zebra and Hermes both pass conformance tests.
-

@@ -21,6 +21,19 @@ pip install -e ".[dev]"
 pytest
 ```
 
+## Protocol Contract
+
+This SDK vendors the ANI protocol contract in `protocol/`.
+
+Refresh it from a sibling backend checkout:
+
+```bash
+python scripts/fetch_protocol.py
+pytest contract-tests
+```
+
+The contract source lives in `agent-native-im/docs/protocol/`.
+
 ## Minimal Usage
 
 ```python
@@ -64,4 +77,3 @@ Future work should migrate duplicated Zebra/Hermes ANI adapter protocol code int
 ## Handoff
 
 Read [`HANDOFF.md`](HANDOFF.md) before continuing development.
-
