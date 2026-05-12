@@ -82,6 +82,32 @@ class AniClient:
             raw=data,
         )
 
+    async def create_conversation(
+        self,
+        *,
+        title: str = "",
+        conv_type: str = "direct",
+        participant_public_ids: list[str] | None = None,
+        source_public_id: str | None = None,
+        description: str = "",
+    ) -> dict[str, Any]:
+        payload: dict[str, Any] = {
+            "conv_type": conv_type,
+            "participant_public_ids": participant_public_ids or [],
+        }
+        if title:
+            payload["title"] = title
+        if description:
+            payload["description"] = description
+        if source_public_id:
+            payload["source_public_id"] = source_public_id
+        return await self._request("POST", "/conversations", json=payload)
+
+    async def batch_presence(self, public_ids: list[str]) -> dict[str, bool]:
+        data = await self._request("POST", "/presence/batch", json={"public_ids": public_ids})
+        presence = data.get("presence_by_public_id") or {}
+        return {str(key): bool(value) for key, value in presence.items()}
+
     async def _ensure_client(self) -> httpx.AsyncClient:
         if self._client is None:
             self._client = httpx.AsyncClient(timeout=self.timeout)
@@ -105,4 +131,3 @@ class AniClient:
         if isinstance(body, dict) and "data" in body:
             return body["data"] or {}
         return body if isinstance(body, dict) else {"value": body}
-

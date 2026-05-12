@@ -26,6 +26,15 @@ def test_send_fields_exist_in_protocol_contract():
         assert field in openapi or field in ws_schema
 
 
+def test_required_public_id_fields_exist_in_protocol_contract():
+    manifest = json.loads((PROTOCOL / "manifest.json").read_text())
+    openapi = (PROTOCOL / "openapi.yaml").read_text()
+    ws_schema = (PROTOCOL / "ws-events.schema.json").read_text()
+
+    for field in manifest["requiredPublicIdFields"]:
+        assert field in openapi or field in ws_schema
+
+
 def test_websocket_events_exist_in_schema():
     manifest = json.loads((PROTOCOL / "manifest.json").read_text())
     schema = json.loads((PROTOCOL / "ws-events.schema.json").read_text())
