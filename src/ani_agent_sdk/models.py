@@ -34,6 +34,8 @@ class AniMessage:
     summary: str = ""
     mentions: list[int] = field(default_factory=list)
     mention_public_ids: list[str] = field(default_factory=list)
+    mention_refs: list[dict[str, Any]] = field(default_factory=list)
+    assigned_public_ids: list[str] = field(default_factory=list)
     raw: dict[str, Any] = field(default_factory=dict)
 
     @classmethod
@@ -47,6 +49,8 @@ class AniMessage:
             summary=str(layers.get("summary") or data.get("summary") or ""),
             mentions=list(data.get("mentions") or []),
             mention_public_ids=list(data.get("mention_public_ids") or []),
+            mention_refs=list(data.get("mention_refs") or []),
+            assigned_public_ids=list(data.get("assigned_public_ids") or []),
             raw=data,
         )
 
@@ -56,4 +60,3 @@ class SendMessageResult:
     id: int | None = None
     ok: bool = False
     raw: dict[str, Any] = field(default_factory=dict)
-

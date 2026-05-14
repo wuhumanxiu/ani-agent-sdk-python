@@ -59,7 +59,9 @@ Agent runtimes should implement only these runtime-specific pieces:
 - Convert ANI `MessageEvent` into the runtime's prompt/input event.
 - Run the agent runtime.
 - Send runtime output with `AniClient.send_text(...)`.
-- Pass `mention_public_ids` for real platform mentions.
+- Pass `mention_refs` plus `assigned_public_ids` when the sender selected
+  visible mentions and only some mentioned entities should act.
+- Pass `mention_public_ids` for simple structured platform mentions.
 - Avoid double delivery: if the runtime uses a send tool to send to the current ANI conversation, do not also auto-send the same final response.
 
 ## Current Scope
@@ -68,7 +70,8 @@ This initial repo intentionally contains a small, stable SDK surface:
 
 - API key authentication.
 - `/me` connectivity check.
-- text message send with `mention_public_ids` and `reply_to`.
+- text message send with `conversation_public_id`, `mention_refs`,
+  `assigned_public_ids`, `mention_public_ids`, and `reply_to`.
 - WebSocket URL construction.
 - typed models for adapter authors.
 

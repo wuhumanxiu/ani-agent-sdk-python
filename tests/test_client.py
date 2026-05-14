@@ -61,6 +61,31 @@ async def test_send_text_uses_public_mentions():
 
 
 @pytest.mark.asyncio
+async def test_send_text_uses_public_conversation_mention_refs_and_assignments():
+    seen = {}
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        seen["json"] = request.read().decode()
+        return httpx.Response(200, json={"ok": True, "data": {"id": 124}})
+
+    transport = httpx.MockTransport(handler)
+    async with httpx.AsyncClient(transport=transport) as http:
+        client = AniClient("https://agent-native.im", "aim_test", client=http)
+        result = await client.send_text(
+            "conv-public",
+            "@Alice hello",
+            mention_refs=[{"public_id": "alice-public", "handle": "bot_alice", "text": "@Alice"}],
+            assigned_public_ids=[],
+        )
+
+    compact = seen["json"].replace(" ", "")
+    assert result.id == 124
+    assert '"conversation_public_id":"conv-public"' in compact
+    assert '"mention_refs":[{"public_id":"alice-public","handle":"bot_alice","text":"@Alice"}]' in compact
+    assert '"assigned_public_ids":[]' in compact
+
+
+@pytest.mark.asyncio
 async def test_create_conversation_uses_public_ids():
     seen = {}
 

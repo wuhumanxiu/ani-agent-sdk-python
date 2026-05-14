@@ -61,17 +61,29 @@ class AniClient:
         conversation_id: int | str,
         text: str,
         *,
+        conversation_public_id: str | None = None,
         mention_public_ids: list[str] | None = None,
+        mention_refs: list[dict[str, Any]] | None = None,
+        assigned_public_ids: list[str] | None = None,
         reply_to: int | str | None = None,
         content_type: str = "text",
     ) -> SendMessageResult:
         payload: dict[str, Any] = {
-            "conversation_id": conversation_id,
             "content_type": content_type,
             "layers": {"summary": text},
         }
+        if conversation_public_id:
+            payload["conversation_public_id"] = conversation_public_id
+        elif isinstance(conversation_id, str) and not conversation_id.strip().isdigit():
+            payload["conversation_public_id"] = conversation_id
+        else:
+            payload["conversation_id"] = conversation_id
         if mention_public_ids:
             payload["mention_public_ids"] = mention_public_ids
+        if mention_refs:
+            payload["mention_refs"] = mention_refs
+        if assigned_public_ids is not None:
+            payload["assigned_public_ids"] = assigned_public_ids
         if reply_to:
             payload["reply_to"] = int(reply_to)
 
