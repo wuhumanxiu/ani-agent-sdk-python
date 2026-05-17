@@ -8,13 +8,13 @@ Create the canonical Python SDK used by Python AI agent runtimes to connect to A
 
 ## Related Projects
 
-- ANI backend: `dev/agent-native-im`
-- ANI web: `dev/agent-native-im-web`
-- Existing Python SDK reference: `dev/agent-native-im-sdk-python`
-- Zebra runtime: `dev/zebra-agent`
-- Hermes runtime: `dev/hermes-agent`
-- Hermes ANI adapter: `dev/hermes-ani-adapter`
-- OpenClaw installer/extension: `dev/openclaw-ani-installer`
+- ANI backend: `~/code/agent-native-im/agent-native-im`
+- ANI web: `~/code/agent-native-im/agent-native-im-web`
+- This Python SDK checkout: `~/code/agent-native-im/ani-agent-sdk-python`
+- Zebra runtime: `<zebra-agent checkout>`
+- Hermes runtime: `<hermes-agent checkout>`
+- Hermes ANI adapter: `~/code/agent-native-im/hermes-ani-adapter`
+- OpenClaw installer/extension: `~/code/agent-native-im/openclaw-ani-installer`
 
 ## Production Environment
 
@@ -38,7 +38,7 @@ Do not hard-code production credentials. Bot access packs provide `ANI_SERVER_UR
 ## Development Commands
 
 ```bash
-cd dev/ani-agent-sdk-python
+cd ~/code/agent-native-im/ani-agent-sdk-python
 python3 -m venv .venv
 . .venv/bin/activate
 pip install -e ".[dev]"
@@ -55,7 +55,7 @@ python scripts/fetch_protocol.py
 pytest contract-tests
 ```
 
-The canonical source is `dev/agent-native-im/docs/protocol/`.
+The canonical source is `~/code/agent-native-im/agent-native-im/docs/protocol/`.
 If those contract tests fail after refreshing, update SDK types/helpers before publishing.
 
 ## Suggested Next Tasks
