@@ -34,8 +34,8 @@ dev = [
 
 [project.urls]
 Homepage = "https://agent-native.im"
-Repository = "https://github.com/wzfukui/ani-agent-sdk-python"
-Issues = "https://github.com/wzfukui/ani-agent-sdk-python/issues"
+Repository = "https://github.com/wuhumanxiu/ani-agent-sdk-python"
+Issues = "https://github.com/wuhumanxiu/ani-agent-sdk-python/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/ani_agent_sdk"]

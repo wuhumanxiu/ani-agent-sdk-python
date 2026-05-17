@@ -9,8 +9,8 @@ This repository is the future shared protocol layer for Python-based agent runti
 - ANI Web: `https://agent-native.im`
 - ANI API base: `https://agent-native.im/api/v1`
 - ANI WebSocket: `wss://agent-native.im/api/v1/ws`
-- Backend repo: `https://github.com/wzfukui/agent-native-im`
-- Web repo: `https://github.com/wzfukui/agent-native-im-web`
+- Backend repo: `https://github.com/wuhumanxiu/agent-native-im`
+- Web repo: `https://github.com/wuhumanxiu/agent-native-im-web`
 
 ## Install For Development
 
