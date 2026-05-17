@@ -8,13 +8,13 @@ Create the canonical Python SDK used by Python AI agent runtimes to connect to A
 
 ## Related Projects
 
-- ANI backend: `/Users/donaldford/code/SuperBody/dev/agent-native-im`
-- ANI web: `/Users/donaldford/code/SuperBody/dev/agent-native-im-web`
-- Existing Python SDK reference: `/Users/donaldford/code/SuperBody/dev/agent-native-im-sdk-python`
-- Zebra runtime: `/Users/donaldford/code/SuperBody/dev/zebra-agent`
-- Hermes runtime: `/Users/donaldford/code/SuperBody/dev/hermes-agent`
-- Hermes ANI adapter: `/Users/donaldford/code/SuperBody/dev/hermes-ani-adapter`
-- OpenClaw installer/extension: `/Users/donaldford/code/SuperBody/dev/openclaw-ani-installer`
+- ANI backend: `dev/agent-native-im`
+- ANI web: `dev/agent-native-im-web`
+- Existing Python SDK reference: `dev/agent-native-im-sdk-python`
+- Zebra runtime: `dev/zebra-agent`
+- Hermes runtime: `dev/hermes-agent`
+- Hermes ANI adapter: `dev/hermes-ani-adapter`
+- OpenClaw installer/extension: `dev/openclaw-ani-installer`
 
 ## Production Environment
 
@@ -38,7 +38,7 @@ Do not hard-code production credentials. Bot access packs provide `ANI_SERVER_UR
 ## Development Commands
 
 ```bash
-cd /Users/donaldford/code/SuperBody/dev/ani-agent-sdk-python
+cd dev/ani-agent-sdk-python
 python3 -m venv .venv
 . .venv/bin/activate
 pip install -e ".[dev]"
@@ -55,7 +55,7 @@ python scripts/fetch_protocol.py
 pytest contract-tests
 ```
 
-The canonical source is `/Users/donaldford/code/SuperBody/dev/agent-native-im/docs/protocol/`.
+The canonical source is `dev/agent-native-im/docs/protocol/`.
 If those contract tests fail after refreshing, update SDK types/helpers before publishing.
 
 ## Suggested Next Tasks
